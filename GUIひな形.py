@@ -4,7 +4,7 @@ import tkinter as tk
 class Application(tk.Frame):
     # tk.Frameのmasterの部分を引き継がせたいので、第二引数にmaster
     # master=Noneはウィジェット全体を指す。
-    def __init__(self,master=None):
+    def __init__(self, master=None):
         # クラスを継承する際の注意点として、以下の一文を入れないと、継承元の__init__が
         # オバーライドして継承した意味がなくなる。ので、スーパークラスのinitをするよう
         # 明示的に示す（オーバーライドすることなく継承できる）
