@@ -1,50 +1,22 @@
 import tkinter as tk
-import schedule
-import time
+
+root = tk.Tk()
+root.title('Main')
+sub_win = None
+
+def message_window():
+    global sub_win
+    if sub_win is None or not sub_win.winfo_exists():
+        # メインウインドウと連動したウインドウを作る
+        sub_win = tk.Toplevel()
+        sub_win.title('About')
+        tk.Message(sub_win, aspect=200,
+                   text='messageのサンプル').pack()
 
 
-class Application(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        # 自分自身（Frame)をメインウインドウに張り付け
-        self.pack()
+m = tk.Menu(root)
+root.configure(menu=m)
+m.add_command(label='About', under=0, command=message_window)
 
-        master.geometry("300x300")
-        master.title("雛形")
-
-        a = tk.Label(text="ちゃんとできてる？")
-        a.pack()
-
-
-class TimeManager(Application):
-
-    def job(self):
-        root = tk.Tk()
-        app = Application(master=root)
-        app.mainloop()
-
-    def manager(self):
-        # 10秒ごと
-        schedule.every(5).seconds.do(self.job)
-
-        while True:
-            schedule.run_pending()
-            time.sleep(1)
-
-
-def job():
-    root = tk.Tk()
-    app = Application(master=root)
-    app.mainloop()
-
-
-def manager():
-    # 10秒ごと
-    schedule.every(5).seconds.do(job)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
-
-manager()
+tk.Label(root, text=u'メニューを選んでね').pack()
+root.mainloop()
