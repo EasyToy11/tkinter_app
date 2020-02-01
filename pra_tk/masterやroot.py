@@ -17,8 +17,7 @@ b.mainloop()
 # クラス App を使ってその中に２つのオブジェクト（テキスト＋"Push"ボタンの組み合わせ）を作れます。
 
 root=tk.Tk()
-b=App("AAA",master=root)
-c=App("BBB",master=root)
+b=App("AAA",master=root)c=App("BBB",master=root)
 b.pack()
 c.pack()
 root.mainloop()
