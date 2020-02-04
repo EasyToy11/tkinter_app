@@ -10,17 +10,30 @@ class Application(tk.Frame):
 
         master.geometry("300x300")
         master.title("雛形")
+        self.wdebug = tk.Button(text="wdisplay")
+        self.wdebug.bind("<1>", Working_timer.wdisplay)
+        self.wdebug.pack()
 
 
+class Working_timer():
+    # ディスプレイの表示部分
+    def wdisplay(self):
+        working_sub = tk.Toplevel(root)
+        working_sub.title("作業していますか？")
+        working_sub.geometry('200x200')
+        working_mes = tk.Label(working_sub, text='作業してますか？\n作業内容を記入してください')
+        working_mes.pack()
+        self.entry1 = tk.Entry(working_sub, width=40)
+        self.entry1.pack()
+
+        self.wbtn = tk.Button(working_sub, text='保存')
+        self.wbtn.bind(working_sub, "<1>", Working_timer.test)
+        self.wbtn.pack()
+
+    def test(self):
+        print('OK!!!')
 # スケジュールの処理は一つにまとめる
 # 39分ごと、規定時間から30分間続ける
-class Job_management():
-    def
-
-    while True:
-        # 規定時間になったものがあれば実行
-        schedule.run_pending()
-        time.sleep(1)
 
 
 if __name__ == "__main__":

@@ -12,7 +12,7 @@ class Application(tk.Frame):
         master.title("雛形")
 
         self.createwidgets()
-        self.save_comment()
+        # self.save_comment()
         master.after(50, self.update)
 
     # ガジェットの作成
